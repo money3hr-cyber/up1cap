@@ -1,0 +1,537 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Barra no topo */
+.top-bar {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* Seção de tela cheia */
+.full-screen-section {
+    width: 100%;
+    min-height: calc(100vh - 117px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: relative;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do conteúdo da verificação */
+.verification-content {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.verification-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.verification-content h1 {
+    font-size: 6vw;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    text-shadow: none;
+}
+
+.verification-content p {
+    font-size: 4.5vw;
+    color: #555;
+    margin-bottom: 30px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Ícone de sucesso animado */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    box-shadow: 
+        0 10px 30px rgba(40, 167, 69, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Texto de status */
+.status-text {
+    font-size: 3.5vw;
+    color: #667eea;
+    font-weight: 500;
+    margin-top: 20px;
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Barra de progresso */
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(90deg, #e0e7ff 0%, #f0f4ff 100%);
+    border-radius: 20px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+    box-shadow: 
+        0 0 20px rgba(102, 126, 234, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: gradientShift 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 0%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Efeito de brilho ao carregar */
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: 100%;
+    width: 30px;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.4) 30%, 
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(255, 255, 255, 0.4) 70%, 
+        transparent 100%
+    );
+    animation: shine 2.5s infinite ease-in-out;
+    border-radius: 20px;
+    filter: blur(1px);
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+}
+
+/* Seção escondida inicialmente */
+.hidden {
+    display: none;
+}
+
+/* Estilo das caixas de informação */
+.box-stage {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    margin-bottom: 25px;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: fadeInUpSmooth 1.5s forwards;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.box-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.box-stage:hover::before {
+    left: 100%;
+}
+
+.box-stage:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Animação suavizada para a aparição das boxes */
+@keyframes fadeInUpSmooth {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        filter: blur(5px);
+    }
+    50% {
+        opacity: 0.7;
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Controle de suavização de fontes para evitar pixelização */
+.box-stage h3, .box-stage p {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.box-stage h3 {
+    font-size: 5vw;
+    font-weight: 600;
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.box-stage p {
+    font-size: 4.5vw;
+    color: #666;
+    font-weight: 400;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Ícones de status nas caixas */
+.status-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.6s ease-out;
+}
+
+.status-icon.success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+}
+
+.status-icon.warning {
+    background: linear-gradient(135deg, #ffc107 0%, #ff8c00 100%);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+}
+
+.status-icon.error {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+}
+
+.status-icon .icon {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilo do ícone no botão */
+.button-icon {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+/* Aviso de reembolso */
+.refund-notice {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.refund-notice small {
+    color: #007bff;
+    font-size: 3.5vw;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Botão pulsante */
+.retry-button {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 50%, #28a745 100%);
+    background-size: 200% 100%;
+    color: white;
+    padding: 15px 30px;
+    font-size: 5vw;
+    font-weight: 600;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 25px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 
+        0 10px 25px rgba(40, 167, 69, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulseGlow 2s infinite;
+}
+
+.retry-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.retry-button:hover::before {
+    left: 100%;
+}
+
+.retry-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(40, 167, 69, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background-position: 100% 0;
+}
+
+.retry-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 
+            0 10px 25px rgba(40, 167, 69, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    50% {
+        box-shadow: 
+            0 10px 25px rgba(40, 167, 69, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 0 10px rgba(40, 167, 69, 0.1);
+    }
+    100% {
+        box-shadow: 
+            0 10px 25px rgba(40, 167, 69, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 600px) {
+    .full-screen-section {
+        min-height: 100vh; /* Garante que a altura se ajuste à tela */
+    }
+
+    .box-stage {
+        width: 95%; /* Reduz a largura das boxes para evitar que saiam da tela */
+        margin-bottom: 15px;
+    }
+
+    .retry-button {
+        font-size: 4.5vw;
+    }
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 600px) {
+    .verification-content h1,
+    .box-stage h3 {
+        font-size: 28px;
+    }
+
+    .verification-content p,
+    .box-stage p {
+        font-size: 18px;
+    }
+
+    .retry-button {
+        font-size: 18px;
+        padding: 18px 35px;
+    }
+
+    .status-text {
+        font-size: 16px;
+    }
+
+    .refund-notice small {
+        font-size: 14px;
+    }
+
+    .success-icon,
+    .checkmark {
+        width: 100px;
+        height: 100px;
+    }
+
+    .checkmark {
+        font-size: 50px;
+    }
+
+    .status-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .status-icon .icon {
+        font-size: 32px;
+    }
+}
+
+/* Ajustes adicionais para telas pequenas */
+@media (max-width: 400px) {
+    .verification-content,
+    .box-stage {
+        padding: 25px 20px;
+        margin: 10px;
+    }
+
+    .full-screen-section {
+        padding: 20px 10px;
+    }
+}
